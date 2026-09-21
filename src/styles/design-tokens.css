@@ -1,0 +1,118 @@
+/* ========================================
+   IncisionCare — Design Tokens
+   Calm, professional healthcare palette
+   ======================================== */
+
+:root {
+  /* ── Primary Colors ── */
+  --ink: #183d3a;
+  --ink-soft: #607674;
+  --ink-muted: #8a9c98;
+  --teal: #397c72;
+  --teal-deep: #245d58;
+  --teal-pale: #e4f0ed;
+  --teal-hover: #2e6b63;
+
+  /* ── Surfaces ── */
+  --paper: #f7f8f4;
+  --surface: #ffffff;
+  --surface-hover: #fbfcfa;
+  --surface-active: #f3f6f4;
+  --sage: #c9ddd4;
+  --cream: #f2efe7;
+  --line: #dbe6e0;
+  --line-soft: #e8eeeb;
+
+  /* ── Status Colors ── */
+  --status-on-track: #3a8f6e;
+  --status-on-track-bg: #e6f5ee;
+  --status-on-track-border: #b5dcc8;
+
+  --status-monitor: #c08b3e;
+  --status-monitor-bg: #fdf4e4;
+  --status-monitor-border: #e8d5a8;
+
+  --status-needs-review: #b85c5c;
+  --status-needs-review-bg: #fce8e8;
+  --status-needs-review-border: #e4b8b8;
+
+  --status-completed: #5a8a7a;
+  --status-completed-bg: #e8f2ee;
+
+  /* ── Alert Colors ── */
+  --alert: #b96f43;
+  --alert-pale: #fbede5;
+  --alert-line: #edc9b6;
+  --alert-text: #8b5233;
+
+  /* ── Info ── */
+  --info: #4a7fb5;
+  --info-bg: #e8f0f8;
+  --info-border: #b8d2e8;
+
+  /* ── Typography ── */
+  --font-serif: 'DM Serif Display', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-sans: 'Inter', 'Avenir Next', 'Segoe UI', Tahoma, sans-serif;
+
+  --text-xs: 0.6875rem;    /* 11px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-md: 1rem;         /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.3125rem;    /* 21px */
+  --text-2xl: 1.6875rem;   /* 27px */
+  --text-3xl: 2rem;        /* 32px */
+  --text-4xl: 2.5rem;      /* 40px */
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tight: -0.035em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.13em;
+
+  /* ── Spacing ── */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* ── Border Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(33, 72, 65, 0.04);
+  --shadow-md: 0 4px 12px rgba(33, 72, 65, 0.06);
+  --shadow-lg: 0 12px 36px rgba(33, 72, 65, 0.07);
+  --shadow-xl: 0 20px 48px rgba(33, 72, 65, 0.1);
+
+  /* ── Transitions ── */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.36s ease;
+
+  /* ── Layout ── */
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
+  --topnav-height: 64px;
+  --content-max-width: 1240px;
+
+  /* ── Z-index ── */
+  --z-sidebar: 30;
+  --z-topnav: 40;
+  --z-modal-backdrop: 50;
+  --z-modal: 60;
+  --z-toast: 70;
+}
