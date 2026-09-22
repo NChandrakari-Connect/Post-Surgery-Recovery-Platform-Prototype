@@ -487,6 +487,7 @@
   .sidebar {
     width: min(300px, 85vw);
     transform: translateX(-100%);
+    z-index: 100;
   }
   
   .sidebar.open {
@@ -502,9 +503,9 @@
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(24, 61, 58, 0.4);
-    backdrop-filter: blur(2px);
-    z-index: calc(var(--z-sidebar) - 1);
+    background: rgba(24, 61, 58, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 95;
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-base);
