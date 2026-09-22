@@ -845,6 +845,113 @@
   gap: 16px;
 }
 
+/* ── Patient Profile Header Card ── */
+.patient-profile-header-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.patient-profile-main-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.patient-profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.patient-profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.patient-profile-name {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.patient-profile-meta-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.profile-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.profile-chip.id-chip {
+  background: var(--teal-pale);
+  color: var(--teal-deep);
+  font-weight: 700;
+  border-color: rgba(36, 93, 88, 0.25);
+}
+
+.patient-profile-subtext {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.patient-profile-score-box {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.profile-score-label {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+
+.profile-score-value {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--teal-deep);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.profile-score-bar-bg {
+  height: 6px;
+  width: 120px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.profile-score-bar-fill {
+  height: 100%;
+  background: var(--teal);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
 /* Wound comparison side-by-side on desktop, vertical stack on mobile */
 .wound-compare-grid {
   display: grid;
@@ -1007,6 +1114,42 @@
   .attention-card {
     padding: 14px 16px;
     gap: 12px;
+  }
+
+  /* Patient Profile Mobile Header */
+  .patient-profile-header-layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .patient-profile-main-info {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .patient-profile-main-info .profile-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 17px !important;
+  }
+
+  .patient-profile-name {
+    font-size: 21px;
+  }
+
+  .patient-profile-score-box {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .profile-score-bar-bg {
+    width: 90px;
+    margin-top: 0;
   }
 }
 

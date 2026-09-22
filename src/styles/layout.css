@@ -551,30 +551,22 @@
   }
   
   .topnav-title {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 110px;
+    max-width: 200px;
   }
   
   .topnav-right {
-    gap: 4px;
+    gap: 6px;
     flex-shrink: 0;
   }
 
-  /* Compact touch-friendly role switcher on mobile */
+  /* Remove extra top role switcher on mobile because the sidebar already has it */
   .role-switcher {
-    display: flex;
-    padding: 2px;
-    border-radius: 999px;
-    gap: 2px;
-  }
-
-  .role-btn {
-    padding: 5px 9px;
-    font-size: 11px;
-    border-radius: 999px;
+    display: none !important;
   }
   
   .topnav-user-info {
