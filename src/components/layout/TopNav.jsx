@@ -49,7 +49,7 @@ export default function TopNav({ title }) {
           </button>
         </div>
 
-        <button className="topnav-icon-btn" aria-label="Search">
+        <button className="topnav-icon-btn topnav-search-btn" aria-label="Search">
           <Search size={20} />
         </button>
 
