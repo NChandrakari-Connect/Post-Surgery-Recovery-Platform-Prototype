@@ -78,8 +78,8 @@ export default function Alerts() {
                     <Icon size={20} />
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 6, flexWrap: 'wrap', gap: 6 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                         <span style={{ fontWeight: 600, fontSize: 15 }}>{alert.title}</span>
                         <span className={`status-badge ${typeClasses[alert.type]}`} style={{ fontSize: 11 }}>
                           <span className="status-dot" />
@@ -94,7 +94,7 @@ export default function Alerts() {
                     <p style={{ fontSize: 14, color: 'var(--ink-soft)', lineHeight: 1.6, margin: '0 0 12px' }}>
                       {alert.description}
                     </p>
-                    <div style={{ display: 'flex', gap: 8 }}>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                       <button className="btn btn-primary btn-sm" onClick={() => navigate(`/patients/${alert.patientId}`)}>
                         <Eye size={14} /> View Patient
                       </button>

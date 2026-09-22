@@ -75,7 +75,7 @@ export default function Dashboard() {
             View all <ArrowRight size={14} />
           </button>
         </div>
-        <div style={{ overflowX: 'auto' }}>
+        <div className="table-responsive">
           <table className="data-table">
             <thead>
               <tr>

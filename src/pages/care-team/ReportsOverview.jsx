@@ -24,7 +24,7 @@ export default function ReportsOverview() {
       </div>
 
       <div className="card">
-        <div style={{ overflowX: 'auto' }}>
+        <div className="table-responsive">
           <table className="data-table">
             <thead>
               <tr>

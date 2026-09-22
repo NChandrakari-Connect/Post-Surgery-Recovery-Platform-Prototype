@@ -1566,7 +1566,7 @@ function ReportsTab({ reports, patient, reportModal, setReportModal, addToast })
       <p>Reports uploaded by the care team will appear here.</p>
     </div></div>
   ) : (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 16 }}>
+    <div className="responsive-card-grid">
       {reports.map(report => (
         <div key={report.id} className="card card-pad">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
@@ -1614,7 +1614,7 @@ function MedicationsTab({ medications }) {
       {/* Daily Schedule */}
       <div className="card card-pad">
         <h3 style={{ marginBottom: 16 }}>Daily Medication Schedule</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+        <div className="responsive-card-grid">
           {['morning', 'afternoon', 'evening', 'night'].map(slot => {
             const slotMeds = active.filter(m => m.timeSlots.includes(slot));
             return (
@@ -1820,7 +1820,7 @@ function WoundTab({ checkins }) {
               {photosCheckins.length} Clinical Images Logged
             </span>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
+          <div className="responsive-card-grid">
             {photosCheckins.map(checkin => (
               <div key={checkin.id} style={{ border: '1px solid var(--line)', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
                 <div
@@ -1916,7 +1916,7 @@ function WoundTab({ checkins }) {
           </div>
 
           {/* Comparison Cards: Left (First / Before-latest) vs Right (Latest) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)', gap: 16, alignItems: 'stretch' }}>
+          <div className="wound-compare-grid">
             {/* Left Card */}
             <div style={{
               display: 'flex',
@@ -1983,7 +1983,7 @@ function WoundTab({ checkins }) {
             </div>
 
             {/* Middle Divider */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '0 4px' }}>
+            <div className="wound-compare-divider" style={{ gap: 10 }}>
               <div style={{
                 width: 38,
                 height: 38,
@@ -2391,32 +2391,34 @@ function ReportDocument({ report, patient }) {
       {report.results && report.results.length > 0 && (
         <>
           <h4 style={{ marginBottom: 12 }}>Results</h4>
-          <table className="data-table" style={{ marginBottom: 20 }}>
-            <thead>
-              <tr>
-                <th>Test</th>
-                <th>Result</th>
-                <th>Unit</th>
-                <th>Reference Range</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {report.results.map((r, i) => (
-                <tr key={i}>
-                  <td style={{ fontWeight: 500 }}>{r.test}</td>
-                  <td style={{ fontWeight: 600 }}>{r.value}</td>
-                  <td style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{r.unit}</td>
-                  <td style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{r.range || '—'}</td>
-                  <td>
-                    <span className={`status-badge ${r.status === 'normal' ? 'on-track' : r.status === 'high' ? 'needs-review' : 'monitor'}`} style={{ fontSize: 11 }}>
-                      {r.status === 'normal' ? 'Normal' : r.status === 'high' ? 'High' : r.status === 'abnormal' ? 'Abnormal' : r.status}
-                    </span>
-                  </td>
+          <div className="table-responsive">
+            <table className="data-table" style={{ marginBottom: 20 }}>
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Result</th>
+                  <th>Unit</th>
+                  <th>Reference Range</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {report.results.map((r, i) => (
+                  <tr key={i}>
+                    <td style={{ fontWeight: 500 }}>{r.test}</td>
+                    <td style={{ fontWeight: 600 }}>{r.value}</td>
+                    <td style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{r.unit}</td>
+                    <td style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{r.range || '—'}</td>
+                    <td>
+                      <span className={`status-badge ${r.status === 'normal' ? 'on-track' : r.status === 'high' ? 'needs-review' : 'monitor'}`} style={{ fontSize: 11 }}>
+                        {r.status === 'normal' ? 'Normal' : r.status === 'high' ? 'High' : r.status === 'abnormal' ? 'Abnormal' : r.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
 

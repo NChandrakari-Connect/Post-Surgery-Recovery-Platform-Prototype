@@ -47,7 +47,7 @@ export default function RecoveryMonitoring() {
       </div>
 
       {/* Per-patient recovery */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 16 }}>
+      <div className="responsive-patient-grid">
         {patients.map(patient => {
           const pct = Math.round((patient.recoveryDay / patient.surgery.expectedRecoveryDays) * 100);
           const statusConfig = getStatusConfig(patient.status);

@@ -218,7 +218,7 @@ export default function PatientCheckin() {
             </div>
 
             {/* Comparison Cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)', gap: 16, alignItems: 'stretch' }}>
+            <div className="wound-compare-grid">
               {/* Left Card */}
               <div style={{
                 display: 'flex',
@@ -280,7 +280,7 @@ export default function PatientCheckin() {
               </div>
 
               {/* Middle Divider */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '0 4px' }}>
+              <div className="wound-compare-divider" style={{ gap: 10 }}>
                 <div style={{
                   width: 38,
                   height: 38,

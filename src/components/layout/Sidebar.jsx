@@ -27,9 +27,16 @@ const patientNav = [
 ];
 
 export default function Sidebar() {
-  const { role, sidebarOpen, setSidebarOpen } = useApp();
+  const { role, setRole, sidebarOpen, setSidebarOpen } = useApp();
   const location = useLocation();
   const navItems = role === 'care-team' ? careTeamNav : patientNav;
+
+  const handleSwitchPortal = (targetRole) => {
+    setRole(targetRole);
+    if (window.innerWidth <= 1024) {
+      setSidebarOpen(false);
+    }
+  };
 
   return (
     <>
@@ -48,17 +55,46 @@ export default function Sidebar() {
             <span className="sidebar-brand-tag">Recovery Platform</span>
           </div>
           <button
+            type="button"
             className="sidebar-close-mobile"
             onClick={() => setSidebarOpen(false)}
-            style={{ display: 'none', marginLeft: 'auto' }}
+            aria-label="Close navigation menu"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
+        </div>
+
+        {/* Portal Switcher Card (Always accessible, especially on mobile) */}
+        <div className="sidebar-portal-card">
+          <div className="sidebar-portal-label">
+            <span>Current Portal</span>
+            <span className="sidebar-portal-badge">
+              {role === 'care-team' ? 'Doctor View' : 'Patient View'}
+            </span>
+          </div>
+          <div className="sidebar-portal-grid">
+            <button
+              type="button"
+              className={`sidebar-portal-btn ${role === 'care-team' ? 'active' : ''}`}
+              onClick={() => handleSwitchPortal('care-team')}
+            >
+              <Stethoscope size={14} />
+              <span>Care Team</span>
+            </button>
+            <button
+              type="button"
+              className={`sidebar-portal-btn ${role === 'patient' ? 'active' : ''}`}
+              onClick={() => handleSwitchPortal('patient')}
+            >
+              <Heart size={14} />
+              <span>Patient</span>
+            </button>
+          </div>
         </div>
 
         <nav className="sidebar-nav">
           <div className="sidebar-section-label">
-            {role === 'care-team' ? 'Clinical' : 'My Health'}
+            {role === 'care-team' ? 'Clinical Workspace' : 'Patient Recovery'}
           </div>
           {navItems.map(item => (
             <NavLink

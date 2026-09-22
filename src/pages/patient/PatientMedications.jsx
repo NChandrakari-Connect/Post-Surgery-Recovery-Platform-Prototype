@@ -38,7 +38,7 @@ export default function PatientMedications() {
             <Clock size={18} style={{ color: 'var(--teal)' }} />
             Daily Medication Schedule
           </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
+          <div className="responsive-card-grid">
             {['morning', 'afternoon', 'evening', 'night'].map(slot => {
               const slotMeds = active.filter(m => m.timeSlots && m.timeSlots.includes(slot));
               return (
@@ -87,7 +87,7 @@ export default function PatientMedications() {
                   <span className="status-badge on-track" style={{ fontSize: 11 }}>Active</span>
                 </div>
 
-                <div className="info-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10, marginTop: 10 }}>
+                <div className="info-grid" style={{ gap: 10, marginTop: 10 }}>
                   <div className="info-item"><span className="info-label">Purpose</span><span className="info-value" style={{ fontSize: 13 }}>{med.purpose}</span></div>
                   <div className="info-item"><span className="info-label">Prescribed On</span><span className="info-value" style={{ fontSize: 13 }}>{formatDateShort(med.startDate)}</span></div>
                   <div className="info-item"><span className="info-label">Duration</span><span className="info-value" style={{ fontSize: 13 }}>{med.endDate ? `Until ${formatDateShort(med.endDate)}` : 'As directed'}</span></div>

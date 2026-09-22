@@ -47,8 +47,8 @@ export default function PatientList() {
       </div>
 
       {/* Search and Filters */}
-      <div style={{ display: 'flex', gap: 16, marginBottom: 24, flexWrap: 'wrap', alignItems: 'center' }}>
-        <div className="search-bar" style={{ flex: '1 1 300px', maxWidth: 400 }}>
+      <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+        <div className="search-bar" style={{ flex: '1 1 240px', width: '100%', maxWidth: 400 }}>
           <Search size={18} />
           <input
             type="text"
@@ -70,7 +70,7 @@ export default function PatientList() {
           ))}
         </div>
 
-        <div className="filter-bar" style={{ marginLeft: 'auto' }}>
+        <div className="filter-bar">
           <button
             className={`filter-chip ${sortBy === 'name' ? 'active' : ''}`}
             onClick={() => setSortBy('name')}
@@ -102,7 +102,7 @@ export default function PatientList() {
           </div>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: 16 }}>
+        <div className="responsive-patient-grid">
           {filtered.map(patient => {
             const statusConfig = getStatusConfig(patient.status);
             const recoveryPct = calculateDynamicRecovery(

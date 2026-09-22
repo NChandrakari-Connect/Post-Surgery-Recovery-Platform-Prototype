@@ -23,46 +23,27 @@ export default function TopNav({ title }) {
           type="button"
           onClick={resetDemoData}
           title="Reset all demo data (appointments, tasks, guidance, check-ins) added in this session"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            padding: '7px 12px',
-            borderRadius: '8px',
-            border: '1px solid var(--line)',
-            background: 'var(--surface)',
-            color: 'var(--ink)',
-            fontSize: 12,
-            fontWeight: 600,
-            cursor: 'pointer',
-            boxShadow: 'var(--shadow-xs)',
-            transition: 'all 0.15s ease'
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.borderColor = 'var(--teal)';
-            e.currentTarget.style.background = 'var(--teal-pale)';
-            e.currentTarget.style.color = 'var(--teal-deep)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.borderColor = 'var(--line)';
-            e.currentTarget.style.background = 'var(--surface)';
-            e.currentTarget.style.color = 'var(--ink)';
-          }}
+          className="topnav-refresh-btn"
         >
           <RotateCcw size={13} style={{ color: 'var(--teal)' }} />
-          <span>Refresh Demo Data</span>
+          <span className="topnav-refresh-text">Refresh Demo Data</span>
         </button>
 
-        <div className="role-switcher">
+        <div className="role-switcher" role="group" aria-label="Portal Switcher">
           <button
+            type="button"
             className={`role-btn ${role === 'care-team' ? 'active' : ''}`}
             onClick={() => setRole('care-team')}
+            title="Switch to Doctor / Care Team Portal"
           >
-            Care Team
+            <span className="role-btn-full">Care Team</span>
+            <span className="role-btn-short">Doctor</span>
           </button>
           <button
+            type="button"
             className={`role-btn ${role === 'patient' ? 'active' : ''}`}
             onClick={() => setRole('patient')}
+            title="Switch to Patient Portal"
           >
             Patient
           </button>

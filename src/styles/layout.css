@@ -213,6 +213,53 @@
   box-shadow: 0 2px 5px rgba(36, 93, 88, 0.2);
 }
 
+.role-btn-short {
+  display: none;
+}
+
+.role-btn-full {
+  display: inline;
+}
+
+.topnav-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.topnav-refresh-btn:hover {
+  border-color: var(--teal);
+  background: var(--teal-pale);
+  color: var(--teal-deep);
+}
+
+@media (max-width: 640px) {
+  .topnav-refresh-text {
+    display: none;
+  }
+  .topnav-refresh-btn {
+    padding: 7px;
+    border-radius: var(--radius-md);
+  }
+  .role-btn-short {
+    display: inline;
+  }
+  .role-btn-full {
+    display: none;
+  }
+}
+
 .topnav-icon-btn {
   display: grid;
   place-items: center;
@@ -345,9 +392,100 @@
   height: 24px;
 }
 
+/* ── Mobile Sidebar Header Controls & Portal Switcher ── */
+.sidebar-close-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--surface-hover);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-left: auto;
+}
+
+.sidebar-close-mobile:hover {
+  background: var(--surface-active);
+  color: var(--teal-deep);
+}
+
+.sidebar-portal-card {
+  margin: 12px 12px 6px;
+  padding: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-portal-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-portal-badge {
+  font-size: 9px;
+  background: var(--teal-pale);
+  color: var(--teal-deep);
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.sidebar-portal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--surface);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-soft);
+}
+
+.sidebar-portal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sidebar-portal-btn.active {
+  background: var(--teal-deep);
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(36, 93, 88, 0.25);
+}
+
+.sidebar-portal-btn:not(.active):hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .sidebar {
+    width: min(300px, 85vw);
     transform: translateX(-100%);
   }
   
@@ -356,11 +494,16 @@
     box-shadow: var(--shadow-xl);
   }
   
+  .sidebar-close-mobile {
+    display: flex;
+  }
+  
   .sidebar-overlay {
     display: block;
     position: fixed;
     inset: 0;
-    background: rgba(24, 61, 58, 0.3);
+    background: rgba(24, 61, 58, 0.4);
+    backdrop-filter: blur(2px);
     z-index: calc(var(--z-sidebar) - 1);
     opacity: 0;
     pointer-events: none;
@@ -374,6 +517,7 @@
   
   .topnav {
     left: 0;
+    padding: 0 16px;
   }
   
   .main-content {
@@ -388,18 +532,82 @@
 
 @media (max-width: 768px) {
   .page-content {
-    padding: 20px 16px;
+    padding: 16px 14px;
   }
   
   .topnav {
-    padding: 0 16px;
+    padding: 0 10px;
+    height: 56px;
+  }
+
+  .main-content {
+    padding-top: 56px;
   }
   
+  .topnav-left {
+    gap: 8px;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  
+  .topnav-title {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px;
+  }
+  
+  .topnav-right {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  /* Compact touch-friendly role switcher on mobile */
   .role-switcher {
-    display: none;
+    display: flex;
+    padding: 2px;
+    border-radius: 999px;
+    gap: 2px;
+  }
+
+  .role-btn {
+    padding: 5px 9px;
+    font-size: 11px;
+    border-radius: 999px;
   }
   
   .topnav-user-info {
     display: none;
+  }
+
+  .topnav-avatar {
+    padding: 2px;
+  }
+
+  .topnav-icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .topnav-icon-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding: 14px 10px;
+  }
+
+  .topnav-title {
+    max-width: 80px;
+    font-size: 14px;
+  }
+
+  .role-btn {
+    padding: 4px 7px;
+    font-size: 10.5px;
   }
 }

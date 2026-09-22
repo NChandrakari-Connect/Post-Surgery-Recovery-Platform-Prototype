@@ -59,7 +59,7 @@ export default function PatientCareTeam() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         {/* Clinician Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 18 }}>
+        <div className="responsive-patient-grid">
           {teamMembers.map((member, i) => (
             <div key={i} className="card card-pad" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
@@ -100,11 +100,11 @@ export default function PatientCareTeam() {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: 10, marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--line-soft)' }}>
+              <div style={{ display: 'flex', gap: 10, marginTop: 18, paddingTop: 14, borderTop: '1px solid var(--line-soft)', flexWrap: 'wrap' }}>
                 <button
                   type="button"
                   className="btn btn-secondary btn-sm"
-                  style={{ flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                  style={{ flex: '1 1 120px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                   onClick={() => addToast(`Connecting call to ${member.name}...`)}
                 >
                   <Phone size={13} /> Call Office
@@ -112,7 +112,7 @@ export default function PatientCareTeam() {
                 <button
                   type="button"
                   className="btn btn-primary btn-sm"
-                  style={{ flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                  style={{ flex: '1 1 120px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                   onClick={() => {
                     setMessageRecipient(member);
                     setMsgQuestion('');
@@ -128,7 +128,7 @@ export default function PatientCareTeam() {
         {/* Scheduled Appointments with Care Team */}
         {followUps.length > 0 && (
           <div className="card card-pad">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
               <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Calendar size={18} style={{ color: 'var(--teal)' }} />
                 Scheduled Visits & Consultations ({followUps.length})
@@ -137,44 +137,41 @@ export default function PatientCareTeam() {
                 Confirmed with Care Team
               </span>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
+            <div className="responsive-card-grid">
               {followUps.map((apt, idx) => (
                 <div
                   key={apt.id}
                   style={{
                     padding: 16,
-                    background: idx === 0 ? 'var(--teal-pale)' : 'var(--paper)',
-                    borderRadius: 'var(--radius-md)',
-                    border: idx === 0 ? '1.5px solid var(--teal)' : '1px solid var(--line)',
+                    background: 'var(--surface)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1.5px solid var(--teal)',
+                    boxShadow: 'var(--shadow-xs)'
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 15 }}>{apt.type || 'Clinic Visit'}</div>
-                      <div style={{ fontSize: 13, color: 'var(--teal-deep)', fontWeight: 500, marginTop: 2 }}>{apt.physician}</div>
-                    </div>
-                    <span className="status-badge on-track" style={{ fontSize: 11 }}>
-                      {apt.department}
+                    <span className="status-badge" style={{ background: 'var(--teal-pale)', color: 'var(--teal-deep)', fontSize: 11, fontWeight: 700 }}>
+                      Upcoming Visit
                     </span>
+                    <span style={{ fontSize: 12, color: 'var(--ink-muted)' }}>#{idx + 1}</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: 'var(--ink-soft)', margin: '8px 0' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <Calendar size={13} style={{ color: 'var(--teal)' }} />
-                      <strong>{formatDate(apt.date)}</strong>
-                    </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <Clock size={13} style={{ color: 'var(--teal)' }} />
-                      {apt.time}
-                    </span>
+                  <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--ink)', marginBottom: 4 }}>
+                    {formatDate(apt.date)}
                   </div>
-                  <div style={{ fontSize: 12, color: 'var(--ink-muted)', marginTop: 4 }}>
-                    📍 {apt.location || 'Surgical Outpatient Pavilion'}
+                  <div style={{ fontSize: 13, color: 'var(--teal-deep)', fontWeight: 600, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <Clock size={14} /> {apt.time} · {apt.type || 'Clinic In-Person'}
                   </div>
-                  {apt.notes && (
-                    <div style={{ fontSize: 12, color: 'var(--ink-soft)', marginTop: 8, padding: '6px 10px', background: 'rgba(255,255,255,0.7)', borderRadius: 4, border: '1px solid var(--line-soft)' }}>
-                      <strong>Note:</strong> {apt.notes}
+                  <div style={{ fontSize: 13, color: 'var(--ink-soft)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <Stethoscope size={14} /> {apt.physician} ({apt.department})
+                  </div>
+                  {apt.location && (
+                    <div style={{ fontSize: 12, color: 'var(--ink-muted)', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <MapPin size={13} /> {apt.location}
                     </div>
                   )}
+                  <div style={{ fontSize: 12, color: 'var(--ink)', background: 'var(--paper)', padding: '6px 10px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--line-soft)', marginTop: 8 }}>
+                    <strong>Reason:</strong> {apt.reason}
+                  </div>
                 </div>
               ))}
             </div>
@@ -187,7 +184,7 @@ export default function PatientCareTeam() {
             <Building size={18} style={{ color: 'var(--teal)' }} />
             Hospital Facility & Emergency Contact
           </h3>
-          <div className="info-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 14 }}>
+          <div className="info-grid">
             <div className="info-item">
               <span className="info-label">Main Facility</span>
               <span className="info-value">{patient.surgery.hospital}</span>

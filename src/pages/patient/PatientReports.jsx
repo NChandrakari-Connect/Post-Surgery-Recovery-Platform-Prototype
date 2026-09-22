@@ -32,7 +32,7 @@ export default function PatientReports() {
           </div>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 18 }}>
+        <div className="responsive-card-grid">
           {reports.map(report => (
             <div key={report.id} className="card card-pad" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
