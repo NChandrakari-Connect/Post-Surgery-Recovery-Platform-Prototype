@@ -1,33 +1,8 @@
-import { useLocation } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
-import { getPatientById, getPatientFullName } from '../../data/patients';
 import { Bell, Menu, Search, RotateCcw } from 'lucide-react';
 
 export default function TopNav({ title }) {
-  const { role, setRole, setSidebarOpen, resetDemoData, selectedPatientId } = useApp();
-  const location = useLocation();
-
-  let displayTitle = title;
-  if (!displayTitle) {
-    if (location.pathname.startsWith('/patients/')) {
-      const match = location.pathname.match(/\/patients\/([^/]+)/);
-      const patient = match ? getPatientById(match[1]) : null;
-      displayTitle = patient ? getPatientFullName(patient) : 'Patient Profile';
-    } else if (role === 'patient') {
-      const patient = getPatientById(selectedPatientId);
-      displayTitle = patient ? getPatientFullName(patient) : 'IncisionCare';
-    } else {
-      const titleMap = {
-        '/': 'Overview',
-        '/patients': 'Patients',
-        '/monitoring': 'Monitoring',
-        '/alerts': 'Alerts',
-        '/reports-overview': 'Reports',
-        '/followups': 'Follow-ups',
-      };
-      displayTitle = titleMap[location.pathname] || 'IncisionCare';
-    }
-  }
+  const { role, setRole, setSidebarOpen, resetDemoData } = useApp();
 
   return (
     <header className="topnav">
@@ -39,7 +14,7 @@ export default function TopNav({ title }) {
         >
           <Menu size={24} />
         </button>
-        {displayTitle && <h1 className="topnav-title" title={displayTitle}>{displayTitle}</h1>}
+        {title && <h1 className="topnav-title">{title}</h1>}
       </div>
 
       <div className="topnav-right">

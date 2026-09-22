@@ -153,24 +153,7 @@ export default function PatientDashboard() {
       {/* Recovery Header */}
       <div className="card" style={{ marginBottom: 24, overflow: 'hidden' }}>
         <div className="card-pad" style={{ background: 'linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%)', color: '#fff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.9 }}>
-              Patient Recovery Portal
-            </span>
-            <span style={{
-              background: 'rgba(255,255,255,0.2)',
-              backdropFilter: 'blur(4px)',
-              padding: '4px 10px',
-              borderRadius: 999,
-              fontSize: 12,
-              fontWeight: 600,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6
-            }}>
-              👤 {getPatientFullName(patient)} · {patient.id}
-            </span>
-          </div>
+          <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.8, marginBottom: 8 }}>Your Recovery</p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20 }}>
             <div>
               <h1 style={{ color: '#fff', margin: '0 0 4px', fontSize: 30 }}>Day {patient.recoveryDay} of {patient.surgery.expectedRecoveryDays}</h1>

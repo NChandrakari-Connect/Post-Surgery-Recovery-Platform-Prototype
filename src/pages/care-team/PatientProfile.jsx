@@ -183,37 +183,31 @@ export default function PatientProfile() {
         <div className="card-pad">
           <div className="patient-profile-header-layout">
             <div className="patient-profile-main-info">
-              <div className="avatar-circle xl profile-avatar" style={{ fontSize: 24, flexShrink: 0 }}>
+              <div className="avatar-circle xl profile-avatar" style={{ fontSize: 22, flexShrink: 0 }}>
                 {getPatientInitials(patient)}
               </div>
               <div className="patient-profile-details">
-                <div className="patient-profile-name-row">
-                  <h1 className="patient-profile-name">{getPatientFullName(patient)}</h1>
-                  <span className={`status-badge ${patient.status}`}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                  <h1 className="patient-profile-name" style={{ margin: 0, fontSize: 24, fontWeight: 700 }}>
+                    {getPatientFullName(patient)}
+                  </h1>
+                  <span className={`status-badge ${patient.status}`} style={{ fontSize: 11 }}>
                     <span className="status-dot" />
                     {statusConfig.label}
                   </span>
                 </div>
-                <div className="patient-profile-meta-chips">
-                  <span className="profile-chip id-chip">ID: {patient.id}</span>
-                  <span className="profile-chip">{patient.age} yrs · {patient.gender}</span>
-                  <span className="profile-chip" style={{ fontWeight: 600, color: 'var(--teal-deep)' }}>{patient.surgery.procedure}</span>
-                  <span className="profile-chip">Day {patient.recoveryDay} of {patient.surgery.expectedRecoveryDays}</span>
-                </div>
-                <div className="patient-profile-subtext">
-                  Attending: {patient.assignedDoctor} · {patient.surgery.hospital}
+                <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', fontSize: 13, color: 'var(--ink-soft)', marginTop: 4 }}>
+                  <span>ID: {patient.id}</span>
+                  <span>{patient.age}y · {patient.gender}</span>
+                  <span>{patient.surgery.procedure}</span>
+                  <span>Day {patient.recoveryDay} of {patient.surgery.expectedRecoveryDays}</span>
                 </div>
               </div>
             </div>
 
             <div className="patient-profile-score-box">
-              <div>
-                <div className="profile-score-label">Recovery Progress</div>
-                <div className="profile-score-value">{recoveryPct}%</div>
-              </div>
-              <div className="profile-score-bar-bg">
-                <div className="profile-score-bar-fill" style={{ width: `${recoveryPct}%` }} />
-              </div>
+              <div style={{ fontSize: 12, color: 'var(--ink-soft)' }}>Recovery Progress</div>
+              <div style={{ fontFamily: 'var(--font-serif)', fontSize: 28, color: 'var(--teal-deep)', fontWeight: 600 }}>{recoveryPct}%</div>
             </div>
           </div>
         </div>
